@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Напоминания - Планировщик ремонта</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Кнопка - Добавить комнату</title>
     <style>
         /* Стили из вашего CSS */
         * {
@@ -18,15 +17,6 @@
         :root {
             --primary: #4361ee;
             --primary-dark: #3a0ca3;
-            --secondary: #7209b7;
-            --accent: #f72585;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #e63946;
-            --light: #f8f9fa;
-            --dark: #2b2d42;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
             --border-radius: 12px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -34,43 +24,13 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--dark);
-            line-height: 1.6;
-            min-height: 100vh;
+            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
+            margin: 0;
             padding: 20px;
-        }
-
-        .reminders-section {
-            background: rgba(248, 249, 250, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 1200px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .section-header h2 {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.8rem;
-            color: var(--dark);
-        }
-
-        .section-header h2 i {
-            color: var(--primary);
         }
 
         .btn {
@@ -84,6 +44,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .btn-primary {
@@ -91,111 +52,20 @@
             color: white;
         }
 
-        .reminders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .reminder-card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 25px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .reminder-card:hover {
-            transform: translateY(-5px);
+        .btn-primary:hover {
+            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
-        }
-
-        .reminder-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .reminder-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .delete-reminder {
-            color: var(--danger);
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-        }
-
-        .reminder-date {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin: 10px 0;
-        }
-
-        .reminder-priority {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .priority-high {
-            background: var(--danger);
-            color: white;
-        }
-
-        .priority-medium {
-            background: var(--warning);
-            color: white;
         }
     </style>
 </head>
 
 <body>
-    <section id="reminders" class="reminders-section">
-        <div class="section-header">
-            <h2>
-                <i class="fas fa-bell"></i>
-                Напоминания
-            </h2>
-            <button class="btn btn-primary" id="add-reminder-btn">
-                <i class="fas fa-plus"></i>
-                Добавить напоминание
-            </button>
-        </div>
+    <button class="btn btn-primary" id="add-room-btn">
+        <i class="fas fa-plus"></i>
+        Добавить комнату
+    </button>
 
-        <div class="reminders-grid">
-            <div class="reminder-card">
-                <div class="reminder-header">
-                    <h3 class="reminder-title">Заказать краску</h3>
-                    <button class="delete-reminder">×</button>
-                </div>
-                <p>Необходимо заказать краску для гостиной до начала работ</p>
-                <div class="reminder-date">28.10.2005, 10:00</div>
-                <span class="reminder-priority priority-high">Высокий</span>
-            </div>
-
-            <div class="reminder-card">
-                <div class="reminder-header">
-                    <h3 class="reminder-title">Встреча с прорабом</h3>
-                    <button class="delete-reminder">×</button>
-                </div>
-                <p>Обсудить план работ на следующую неделю</p>
-                <div class="reminder-date">30.10.2005, 14:00</div>
-                <span class="reminder-priority priority-medium">Средний</span>
-            </div>
-        </div>
-    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 
 </html>
