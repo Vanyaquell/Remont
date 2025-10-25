@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавить задачу - Модальное окно</title>
+    <title>Добавить расход - Модальное окно</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Стили из вашего CSS для модальных окон */
@@ -108,12 +108,6 @@
             margin-bottom: 20px;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -122,8 +116,7 @@
         }
 
         .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group select {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid var(--light-gray);
@@ -133,16 +126,10 @@
         }
 
         .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
         }
 
         .btn {
@@ -171,54 +158,41 @@
 </head>
 
 <body>
-    <div id="add-task-modal" class="modal">
+    <div id="add-expense-modal" class="modal">
         <div class="modal-header">
             <h3>
-                <i class="fas fa-tasks"></i>
-                Добавить задачу
+                <i class="fas fa-receipt"></i>
+                Добавить расход
             </h3>
             <span class="close">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="add-task-form">
+            <form id="add-expense-form">
                 <div class="form-group">
-                    <label for="task-room">Комната:</label>
-                    <select id="task-room" required>
-                        <option value="">Выберите комнату</option>
-                        <option value="1">Гостиная</option>
-                        <option value="2">Кухня</option>
-                        <option value="3">Спальня</option>
+                    <label for="expense-date">Дата:</label>
+                    <input type="date" id="expense-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="expense-category">Категория:</label>
+                    <select id="expense-category" required>
+                        <option value="материалы">Материалы</option>
+                        <option value="работа">Работа</option>
+                        <option value="мебель">Мебель</option>
+                        <option value="техника">Техника</option>
+                        <option value="другое">Другое</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="task-name">Название задачи:</label>
-                    <input type="text" id="task-name" required placeholder="Например: Покраска стен">
+                    <label for="expense-description">Описание:</label>
+                    <input type="text" id="expense-description" required placeholder="Описание расхода">
                 </div>
                 <div class="form-group">
-                    <label for="task-description">Описание:</label>
-                    <textarea id="task-description" placeholder="Подробное описание задачи..."></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="task-priority">Приоритет:</label>
-                        <select id="task-priority">
-                            <option value="low">Низкий</option>
-                            <option value="medium">Средний</option>
-                            <option value="high">Высокий</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="task-cost">Стоимость (₽):</label>
-                        <input type="number" id="task-cost" min="0" step="0.01" placeholder="0">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="task-deadline">Срок выполнения:</label>
-                    <input type="date" id="task-deadline">
+                    <label for="expense-amount">Сумма (₽):</label>
+                    <input type="number" id="expense-amount" min="0" step="0.01" required placeholder="0">
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
-                    Добавить задачу
+                    Добавить расход
                 </button>
             </form>
         </div>
