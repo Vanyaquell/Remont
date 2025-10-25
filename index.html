@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавить комнату - Модальное окно</title>
+    <title>Добавить задачу - Модальное окно</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Стили из вашего CSS для модальных окон */
@@ -108,6 +108,12 @@
             margin-bottom: 20px;
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -116,6 +122,7 @@
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 12px 15px;
@@ -126,6 +133,7 @@
         }
 
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
@@ -163,27 +171,54 @@
 </head>
 
 <body>
-    <div id="add-room-modal" class="modal">
+    <div id="add-task-modal" class="modal">
         <div class="modal-header">
             <h3>
-                <i class="fas fa-door-open"></i>
-                Добавить комнату
+                <i class="fas fa-tasks"></i>
+                Добавить задачу
             </h3>
             <span class="close">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="add-room-form">
+            <form id="add-task-form">
                 <div class="form-group">
-                    <label for="room-name">Название комнаты:</label>
-                    <input type="text" id="room-name" required placeholder="Например: Гостиная">
+                    <label for="task-room">Комната:</label>
+                    <select id="task-room" required>
+                        <option value="">Выберите комнату</option>
+                        <option value="1">Гостиная</option>
+                        <option value="2">Кухня</option>
+                        <option value="3">Спальня</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="room-description">Описание:</label>
-                    <textarea id="room-description" placeholder="Описание комнаты или планы по ремонту..."></textarea>
+                    <label for="task-name">Название задачи:</label>
+                    <input type="text" id="task-name" required placeholder="Например: Покраска стен">
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Описание:</label>
+                    <textarea id="task-description" placeholder="Подробное описание задачи..."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-priority">Приоритет:</label>
+                        <select id="task-priority">
+                            <option value="low">Низкий</option>
+                            <option value="medium">Средний</option>
+                            <option value="high">Высокий</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-cost">Стоимость (₽):</label>
+                        <input type="number" id="task-cost" min="0" step="0.01" placeholder="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="task-deadline">Срок выполнения:</label>
+                    <input type="date" id="task-deadline">
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
-                    Добавить комнату
+                    Добавить задачу
                 </button>
             </form>
         </div>
