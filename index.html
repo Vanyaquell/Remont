@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавить поставщика - Модальное окно</title>
+    <title>Добавить напоминание - Модальное окно</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Стили из вашего CSS для модальных окон */
@@ -171,49 +171,45 @@
 </head>
 
 <body>
-    <div id="add-supplier-modal" class="modal">
+    <div id="add-reminder-modal" class="modal">
         <div class="modal-header">
             <h3>
-                <i class="fas fa-truck"></i>
-                Добавить поставщика
+                <i class="fas fa-bell"></i>
+                Добавить напоминание
             </h3>
             <span class="close">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="add-supplier-form">
+            <form id="add-reminder-form">
                 <div class="form-group">
-                    <label for="supplier-name">Название компании:</label>
-                    <input type="text" id="supplier-name" required placeholder="Название компании">
+                    <label for="reminder-title">Заголовок:</label>
+                    <input type="text" id="reminder-title" required placeholder="Краткое описание">
                 </div>
                 <div class="form-group">
-                    <label for="supplier-contact">Контактное лицо:</label>
-                    <input type="text" id="supplier-contact" placeholder="Имя контактного лица">
+                    <label for="reminder-description">Описание:</label>
+                    <textarea id="reminder-description" placeholder="Подробное описание напоминания..."></textarea>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="supplier-phone">Телефон:</label>
-                        <input type="tel" id="supplier-phone" placeholder="+7 (XXX) XXX-XX-XX">
+                        <label for="reminder-date">Дата:</label>
+                        <input type="date" id="reminder-date" required>
                     </div>
                     <div class="form-group">
-                        <label for="supplier-email">Email:</label>
-                        <input type="email" id="supplier-email" placeholder="email@example.com">
+                        <label for="reminder-time">Время:</label>
+                        <input type="time" id="reminder-time" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="supplier-address">Адрес:</label>
-                    <input type="text" id="supplier-address" placeholder="Адрес компании">
-                </div>
-                <div class="form-group">
-                    <label for="supplier-specialization">Специализация:</label>
-                    <input type="text" id="supplier-specialization" placeholder="Чем занимается компания">
-                </div>
-                <div class="form-group">
-                    <label for="supplier-notes">Примечания:</label>
-                    <textarea id="supplier-notes" placeholder="Дополнительная информация..."></textarea>
+                    <label for="reminder-priority">Приоритет:</label>
+                    <select id="reminder-priority">
+                        <option value="low">Низкий</option>
+                        <option value="medium">Средний</option>
+                        <option value="high">Высокий</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
-                    Добавить поставщика
+                    Добавить напоминание
                 </button>
             </form>
         </div>
