@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поставщики - Планировщик ремонта</title>
+    <title>Напоминания - Планировщик ремонта</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Стили из вашего CSS */
@@ -44,7 +44,7 @@
             padding: 20px;
         }
 
-        .suppliers-section {
+        .reminders-section {
             background: rgba(248, 249, 250, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
@@ -91,84 +91,108 @@
             color: white;
         }
 
-        .suppliers-grid {
+        .reminders-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        .supplier-card {
+        .reminder-card {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             padding: 25px;
             transition: var(--transition);
+            position: relative;
         }
 
-        .supplier-card:hover {
+        .reminder-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
-        .supplier-header {
+        .reminder-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
 
-        .supplier-name {
+        .reminder-title {
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--dark);
         }
 
-        .delete-supplier {
+        .delete-reminder {
             color: var(--danger);
             cursor: pointer;
             background: none;
             border: none;
             font-size: 1.2rem;
         }
+
+        .reminder-date {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 10px 0;
+        }
+
+        .reminder-priority {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .priority-high {
+            background: var(--danger);
+            color: white;
+        }
+
+        .priority-medium {
+            background: var(--warning);
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-    <section id="suppliers" class="suppliers-section">
+    <section id="reminders" class="reminders-section">
         <div class="section-header">
             <h2>
-                <i class="fas fa-truck"></i>
-                Список поставщиков
+                <i class="fas fa-bell"></i>
+                Напоминания
             </h2>
-            <button class="btn btn-primary" id="add-supplier-btn">
+            <button class="btn btn-primary" id="add-reminder-btn">
                 <i class="fas fa-plus"></i>
-                Добавить поставщика
+                Добавить напоминание
             </button>
         </div>
 
-        <div class="suppliers-grid">
-            <div class="supplier-card">
-                <div class="supplier-header">
-                    <h3 class="supplier-name">СтройМаркет</h3>
-                    <button class="delete-supplier">×</button>
+        <div class="reminders-grid">
+            <div class="reminder-card">
+                <div class="reminder-header">
+                    <h3 class="reminder-title">Заказать краску</h3>
+                    <button class="delete-reminder">×</button>
                 </div>
-                <p><strong>Контактное лицо:</strong> Иван Петров</p>
-                <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
-                <p><strong>Email:</strong> ivan@stroymarket.ru</p>
-                <p><strong>Адрес:</strong> ул. Строителей, 15</p>
-                <p><strong>Специализация:</strong> Строительные материалы</p>
+                <p>Необходимо заказать краску для гостиной до начала работ</p>
+                <div class="reminder-date">28.10.2005, 10:00</div>
+                <span class="reminder-priority priority-high">Высокий</span>
             </div>
 
-            <div class="supplier-card">
-                <div class="supplier-header">
-                    <h3 class="supplier-name">ЭлектроМир</h3>
-                    <button class="delete-supplier">×</button>
+            <div class="reminder-card">
+                <div class="reminder-header">
+                    <h3 class="reminder-title">Встреча с прорабом</h3>
+                    <button class="delete-reminder">×</button>
                 </div>
-                <p><strong>Контактное лицо:</strong> Мария Сидорова</p>
-                <p><strong>Телефон:</strong> +7 (999) 765-43-21</p>
-                <p><strong>Email:</strong> maria@electromir.ru</p>
-                <p><strong>Адрес:</strong> пр. Энергетиков, 28</p>
-                <p><strong>Специализация:</strong> Электрика и освещение</p>
+                <p>Обсудить план работ на следующую неделю</p>
+                <div class="reminder-date">30.10.2005, 14:00</div>
+                <span class="reminder-priority priority-medium">Средний</span>
             </div>
         </div>
     </section>
