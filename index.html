@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бюджет - Планировщик ремонта</title>
+    <title>Поставщики - Планировщик ремонта</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Стили из вашего CSS */
@@ -44,7 +44,7 @@
             padding: 20px;
         }
 
-        .budget-section {
+        .suppliers-section {
             background: rgba(248, 249, 250, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
@@ -73,11 +73,6 @@
             color: var(--primary);
         }
 
-        .header-actions {
-            display: flex;
-            gap: 15px;
-        }
-
         .btn {
             display: inline-flex;
             align-items: center;
@@ -96,197 +91,84 @@
             color: white;
         }
 
-        .btn-accent {
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            color: white;
-        }
-
-        .budget-overview {
+        .suppliers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 30px;
         }
 
-        .budget-card {
+        .supplier-card {
             background: white;
-            padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            padding: 25px;
             transition: var(--transition);
         }
 
-        .budget-card:hover {
+        .supplier-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
-        .budget-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .supplier-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
+            margin-bottom: 15px;
         }
 
-        .main-budget .budget-icon {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-        }
-
-        .spent-budget .budget-icon {
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-        }
-
-        .remaining-budget .budget-icon {
-            background: linear-gradient(135deg, var(--success), #4895ef);
-        }
-
-        .budget-info h3 {
-            font-size: 1rem;
-            color: var(--gray);
-            margin-bottom: 5px;
-        }
-
-        .amount {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .expenses-section {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-
-        .expenses-section h3 {
-            padding: 20px 25px;
-            background: var(--light);
-            margin: 0;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .table-container {
-            overflow-x: auto;
-        }
-
-        .expenses-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .expenses-table th,
-        .expenses-table td {
-            padding: 15px 20px;
-            text-align: left;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .expenses-table th {
-            background: var(--light);
+        .supplier-name {
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--dark);
         }
 
-        .delete-expense {
+        .delete-supplier {
             color: var(--danger);
             cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: var(--transition);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 
 <body>
-    <section id="budget" class="budget-section">
+    <section id="suppliers" class="suppliers-section">
         <div class="section-header">
             <h2>
-                <i class="fas fa-chart-pie"></i>
-                Трекер бюджета
+                <i class="fas fa-truck"></i>
+                Список поставщиков
             </h2>
-            <div class="header-actions">
-                <button class="btn btn-primary" id="set-budget-btn">
-                    <i class="fas fa-target"></i>
-                    Установить бюджет
-                </button>
-                <button class="btn btn-accent" id="add-expense-btn">
-                    <i class="fas fa-receipt"></i>
-                    Добавить расход
-                </button>
-            </div>
+            <button class="btn btn-primary" id="add-supplier-btn">
+                <i class="fas fa-plus"></i>
+                Добавить поставщика
+            </button>
         </div>
 
-        <div class="budget-overview">
-            <div class="budget-card main-budget">
-                <div class="budget-icon">
-                    <i class="fas fa-wallet"></i>
+        <div class="suppliers-grid">
+            <div class="supplier-card">
+                <div class="supplier-header">
+                    <h3 class="supplier-name">СтройМаркет</h3>
+                    <button class="delete-supplier">×</button>
                 </div>
-                <div class="budget-info">
-                    <h3>Общий бюджет</h3>
-                    <p class="amount total-budget">500 000,00 ₽</p>
-                </div>
+                <p><strong>Контактное лицо:</strong> Иван Петров</p>
+                <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+                <p><strong>Email:</strong> ivan@stroymarket.ru</p>
+                <p><strong>Адрес:</strong> ул. Строителей, 15</p>
+                <p><strong>Специализация:</strong> Строительные материалы</p>
             </div>
-            <div class="budget-card spent-budget">
-                <div class="budget-icon">
-                    <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <div class="budget-info">
-                    <h3>Потрачено</h3>
-                    <p class="amount spent">30 000,00 ₽</p>
-                </div>
-            </div>
-            <div class="budget-card remaining-budget">
-                <div class="budget-icon">
-                    <i class="fas fa-piggy-bank"></i>
-                </div>
-                <div class="budget-info">
-                    <h3>Остаток</h3>
-                    <p class="amount remaining">470 000,00 ₽</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="expenses-section">
-            <h3>История расходов</h3>
-            <div class="table-container">
-                <table class="expenses-table">
-                    <thead>
-                        <tr>
-                            <th>Дата</th>
-                            <th>Категория</th>
-                            <th>Описание</th>
-                            <th>Сумма</th>
-                            <th>Действия</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>25.10.2005</td>
-                            <td>Материалы</td>
-                            <td>Краска и др. материалы</td>
-                            <td>20 000,00 ₽</td>
-                            <td>
-                                <span class="delete-expense">■</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>25.10.2005</td>
-                            <td>Работа</td>
-                            <td>Покраска стен</td>
-                            <td>10 000,00 ₽</td>
-                            <td>
-                                <span class="delete-expense">■</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="supplier-card">
+                <div class="supplier-header">
+                    <h3 class="supplier-name">ЭлектроМир</h3>
+                    <button class="delete-supplier">×</button>
+                </div>
+                <p><strong>Контактное лицо:</strong> Мария Сидорова</p>
+                <p><strong>Телефон:</strong> +7 (999) 765-43-21</p>
+                <p><strong>Email:</strong> maria@electromir.ru</p>
+                <p><strong>Адрес:</strong> пр. Энергетиков, 28</p>
+                <p><strong>Специализация:</strong> Электрика и освещение</p>
             </div>
         </div>
     </section>
